@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,25 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        });
+        button.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                                MainActivity.this,
+                                new DatePickerDialog.OnDateSetListener() {
+                                    @Override
+                                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                                        Toast.makeText(MainActivity.this,
+                                                "rok: "+i+" miesiac "+(i1 +1)+" dzien "+i2,
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                },
+                                2000, 4, 3
+                        );
+                        datePickerDialog.show();
+                    }
+                }
+        );
+        };
     }
-}
